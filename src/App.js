@@ -226,7 +226,7 @@ function App() {
               value={formData.manusAiRefLink}
               onChange={handleChange}
               className="form-input"
-              placeholder="https://manus.ai/ref/your-ref-code"
+              placeholder="https://manus.im/invitation/your-ref"
               required
             />
           </div>
@@ -368,7 +368,7 @@ function App() {
                   </div>
 
                   <div className="tip-box">
-                    <p>💡 <strong>เคล็ดลับ:</strong> Link ปกติจะขึ้นต้นด้วย https://manus.ai/ref/[รหัสของคุณ]</p>
+                    <p>💡 <strong>เคล็ดลับ:</strong> Link ปกติจะขึ้นต้นด้วย https://manus.im/invitation/[รหัสของคุณ]</p>
                   </div>
                 </div>
               </div>
