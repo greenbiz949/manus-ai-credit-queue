@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Send, User, Facebook, Link, MessageCircle, Upload, HelpCircle } from 'lucide-react';
+import { Send, Facebook, Link, MessageCircle, Upload, HelpCircle } from 'lucide-react';
 import './index.css';
 
 function App() {
   const [formData, setFormData] = useState({
-    fullName: '',
     facebookLink: '',
     manusAiRefLink: '',
     slip: null
@@ -46,10 +45,6 @@ function App() {
   };
 
   const validateForm = () => {
-    if (!formData.fullName.trim()) {
-      setMessage({ text: 'กรุณากรอกชื่อ-นามสกุล', type: 'error' });
-      return false;
-    }
     if (!formData.facebookLink.trim()) {
       setMessage({ text: 'กรุณากรอก Link Facebook ของคุณ', type: 'error' });
       return false;
@@ -90,14 +85,12 @@ function App() {
     
     // Send as URL encoded form data
     const formDataToSend = new URLSearchParams();
-    formDataToSend.append('fullName', data.fullName);
     formDataToSend.append('facebookLink', data.facebookLink);
     formDataToSend.append('manusAiRefLink', data.manusAiRefLink);
     formDataToSend.append('fileBase64', fileBase64);
     formDataToSend.append('fileName', fileName);
 
     console.log('Sending data to Google Apps Script:');
-    console.log('- fullName:', data.fullName);
     console.log('- facebookLink:', data.facebookLink);
     console.log('- manusAiRefLink:', data.manusAiRefLink);
     console.log('- fileName:', fileName);
@@ -149,7 +142,6 @@ function App() {
       setMessage({ text: 'บันทึกข้อมูลเรียบร้อยแล้ว! ขอบคุณค่ะ', type: 'success' });
       
       setFormData({
-        fullName: '',
         facebookLink: '',
         manusAiRefLink: '',
         slip: null
@@ -171,23 +163,6 @@ function App() {
           </div>
 
         <form onSubmit={handleSubmit} className="form">
-          <div className="form-group">
-            <label htmlFor="fullName" className="form-label">
-              <User size={16} style={{ display: 'inline', marginRight: '5px' }} />
-              ชื่อ-นามสกุล *
-            </label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              className="form-input"
-              placeholder="กรอกชื่อ-นามสกุลของท่าน"
-              required
-            />
-          </div>
-
           <div className="form-group">
             <label htmlFor="facebookLink" className="form-label">
               <Facebook size={16} style={{ display: 'inline', marginRight: '5px' }} />
